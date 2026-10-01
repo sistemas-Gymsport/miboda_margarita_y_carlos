@@ -19,7 +19,7 @@ function GalleryTile({ image, index, handleProps, onSetMain, onReplace, onDelete
   return (
     <figure className={styles.tile}>
       <div className={styles.thumb}>
-        <img src={cldUrl(image.url, { width: 480, height: 480, crop: 'fill', gravity: 'auto' })} alt={image.alt || `Fotografía ${index + 1}`} loading="lazy" />
+        <img src={cldUrl(image.url, { width: 480, height: 480, crop: 'limit' })} alt={image.alt || `Fotografía ${index + 1}`} loading="lazy" />
         <button type="button" className={styles.drag} {...handleProps}>
           <GripVertical size={16} />
         </button>

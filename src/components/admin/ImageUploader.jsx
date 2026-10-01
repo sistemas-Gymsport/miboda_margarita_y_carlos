@@ -32,7 +32,9 @@ export default function ImageUploader({ onFiles, multiple = true, disabled = fal
       >
         <ImagePlus size={28} strokeWidth={1.4} aria-hidden="true" />
         <p className={styles.title}>Arrastra tus fotografías aquí</p>
-        <p className={styles.hint}>JPG, PNG o WEBP · máximo {MAX_IMAGE_MB} MB por imagen</p>
+        <p className={styles.hint}>
+          JPG, PNG o WEBP · máximo {MAX_IMAGE_MB} MB por imagen · se recomienda formato cuadrado o vertical 9:16
+        </p>
         <button type="button" className="a-btn a-btn-primary" onClick={() => inputRef.current?.click()} disabled={disabled}>
           Seleccionar fotografías
         </button>

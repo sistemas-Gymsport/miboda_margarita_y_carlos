@@ -52,7 +52,7 @@ export default function Lightbox({ images, index, onChange, onClose }) {
           <motion.img
             key={image.id}
             className={styles.image}
-            src={cldUrl(image.url, { width: 1800 })}
+            src={cldUrl(image.url, { width: 2400 })}
             alt={image.alt || `Fotografía ${index + 1}`}
             initial={{ opacity: 0, scale: 0.97 }}
             animate={{ opacity: 1, scale: 1 }}

@@ -103,6 +103,29 @@
   color: rgb(255 255 255 / 0.65);
 }
 
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-shrink: 0;
+}
+
+.lock {
+  display: grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  color: rgb(255 255 255 / 0.4);
+  transition: color 0.4s, background 0.4s;
+}
+
+.lock:hover,
+.lock:focus-visible {
+  color: #fff;
+  background: rgb(255 255 255 / 0.08);
+}
+
 .top {
   display: grid;
   place-items: center;

@@ -82,9 +82,15 @@
 }
 
 .a-topbar-title {
+  min-width: 0;
   font-size: 1rem;
   font-weight: 600;
   margin: 0;
+}
+
+.a-topbar > .a-row {
+  flex-shrink: 0;
+  flex-wrap: nowrap;
 }
 
 .a-content {
@@ -235,6 +241,18 @@
   margin: 0 auto 1rem;
   border-radius: 4px;
   background: var(--a-border-strong);
+}
+
+@media (max-width: 479px) {
+  .a-hide-mobile {
+    display: none;
+  }
+
+  .a-topbar-title {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 }
 
 @media (min-width: 960px) {

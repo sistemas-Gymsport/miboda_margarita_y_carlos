@@ -1,5 +1,5 @@
-import { NavLink } from 'react-router-dom';
-import { LogOut, User } from 'lucide-react';
+import { Link, NavLink } from 'react-router-dom';
+import { Home, LogOut, User } from 'lucide-react';
 import { NAV_ITEMS } from './navItems';
 import { useAuth } from '../../hooks/useAuth';
 
@@ -44,6 +44,9 @@ export default function Sidebar() {
         <span className="a-user">
           <User size={16} aria-hidden="true" /> {user?.username}
         </span>
+        <Link to="/" className="a-btn a-btn-ghost" style={{ justifyContent: 'flex-start' }}>
+          <Home size={16} aria-hidden="true" /> Ir a la invitación
+        </Link>
         <button type="button" className="a-btn a-btn-ghost" style={{ justifyContent: 'flex-start' }} onClick={logout}>
           <LogOut size={16} aria-hidden="true" /> Cerrar sesión
         </button>

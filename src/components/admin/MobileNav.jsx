@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
-import { LogOut, Menu } from 'lucide-react';
+import { Home, LogOut, Menu } from 'lucide-react';
 import { MOBILE_PRIMARY, NAV_ITEMS } from './navItems';
 import { NavList } from './Sidebar';
 import { useAuth } from '../../hooks/useAuth';
@@ -43,6 +43,9 @@ export default function MobileNav() {
             >
               <div className="a-sheet-handle" aria-hidden="true" />
               <NavList onNavigate={() => setOpen(false)} />
+              <Link to="/" className="a-btn a-btn-secondary" style={{ width: '100%', marginTop: '0.75rem' }}>
+                <Home size={16} aria-hidden="true" /> Ir a la invitación
+              </Link>
               <button type="button" className="a-btn a-btn-ghost" style={{ width: '100%', marginTop: '0.75rem' }} onClick={logout}>
                 <LogOut size={16} aria-hidden="true" /> Cerrar sesión
               </button>

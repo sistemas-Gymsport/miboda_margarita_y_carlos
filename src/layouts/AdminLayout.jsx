@@ -1,5 +1,5 @@
-import { Outlet, useLocation } from 'react-router-dom';
-import { Eye } from 'lucide-react';
+import { Link, Outlet, useLocation } from 'react-router-dom';
+import { Eye, Home } from 'lucide-react';
 import Sidebar from '../components/admin/Sidebar';
 import MobileNav from '../components/admin/MobileNav';
 import { NAV_ITEMS } from '../components/admin/navItems';
@@ -35,9 +35,22 @@ export default function AdminLayout() {
         <div className="a-main">
           <div className="a-topbar">
             <p className="a-topbar-title">{current?.label || 'Panel'}</p>
-            <a className="a-btn a-btn-secondary a-btn-sm" href="/" target="_blank" rel="noopener noreferrer">
-              <Eye size={16} aria-hidden="true" /> Vista previa
-            </a>
+            <div className="a-row">
+              {/* Navega a la invitacion en la misma pestana; la cookie de sesion se conserva. */}
+              <Link className="a-btn a-btn-primary a-btn-sm" to="/">
+                <Home size={16} aria-hidden="true" /> Ir a la invitación
+              </Link>
+              <a
+                className="a-btn a-btn-secondary a-btn-sm"
+                href="/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Vista previa en otra pestaña"
+                title="Vista previa en otra pestaña"
+              >
+                <Eye size={16} aria-hidden="true" /> <span className="a-hide-mobile">Vista previa</span>
+              </a>
+            </div>
           </div>
           <main className="a-content">
             <AdminContent />

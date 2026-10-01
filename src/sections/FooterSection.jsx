@@ -1,6 +1,7 @@
 import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { ArrowUp } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { ArrowUp, Lock } from 'lucide-react';
 import AnimatedText from '../components/AnimatedText';
 import CldImage from '../components/CldImage';
 import Ornament from '../components/Ornament';
@@ -46,9 +47,15 @@ export default function FooterSection({ wedding, content, image, showClosing = t
 
       <div className={styles.bottom}>
         <p>{content.footerNote}</p>
-        <a href="#top" className={styles.top} aria-label="Volver al inicio">
-          <ArrowUp size={16} strokeWidth={1.4} />
-        </a>
+        <div className={styles.actions}>
+          {/* Acceso discreto al panel: si ya hay sesion, /admin entra directo. */}
+          <Link to="/admin" className={styles.lock} aria-label="Iniciar sesión en el panel" title="Administración">
+            <Lock size={14} strokeWidth={1.4} />
+          </Link>
+          <a href="#top" className={styles.top} aria-label="Volver al inicio">
+            <ArrowUp size={16} strokeWidth={1.4} />
+          </a>
+        </div>
       </div>
     </footer>
   );

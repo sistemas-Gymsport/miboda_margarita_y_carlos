@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { Navigate, useLocation, useNavigate } from 'react-router-dom';
-import { CircleAlert, Lock } from 'lucide-react';
+import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
+import { ArrowLeft, CircleAlert, Lock } from 'lucide-react';
 import { useAuth } from '../../hooks/useAuth';
 import Field from '../../components/admin/Field';
 import WeddingLoader from '../../components/WeddingLoader';
@@ -58,6 +58,9 @@ export default function LoginPage() {
         <button type="submit" className="a-btn a-btn-primary" disabled={submitting}>
           <Lock size={16} aria-hidden="true" /> Entrar
         </button>
+        <Link to="/" className="a-btn a-btn-ghost">
+          <ArrowLeft size={16} aria-hidden="true" /> Regresar a la invitación
+        </Link>
       </form>
     </div>
   );

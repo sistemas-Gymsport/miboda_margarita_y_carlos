@@ -1,0 +1,137 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  padding: 2rem var(--gutter);
+  background:
+    radial-gradient(ellipse at 50% 40%, color-mix(in srgb, var(--color-surface) 70%, transparent), transparent 70%),
+    var(--color-background);
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.4rem;
+}
+
+.eyebrow {
+  margin-bottom: 1.6rem;
+  font-size: var(--text-xs);
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+.name {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: clamp(3.2rem, 2rem + 8vw, 6.5rem);
+  font-weight: 300;
+  line-height: 1;
+  color: var(--color-text);
+}
+
+.ampersandRow {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 0.4rem 0;
+}
+
+.line {
+  display: block;
+  width: clamp(3rem, 14vw, 6rem);
+  height: 1px;
+  background: var(--color-line);
+}
+
+.ampersand {
+  font-family: var(--font-heading);
+  font-style: italic;
+  font-size: clamp(2rem, 1.4rem + 3vw, 3.2rem);
+  color: var(--color-accent);
+  line-height: 1;
+}
+
+.date {
+  margin-top: 1.8rem;
+  font-size: var(--text-xs);
+  letter-spacing: 0.38em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.open {
+  margin-top: 2.6rem;
+  padding: 0.85rem 1.8rem;
+  background: transparent;
+  border: 1px solid var(--color-line);
+  border-radius: 999px;
+  font-size: 0.68rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--color-text);
+  transition: background 0.5s var(--ease-elegant), color 0.5s var(--ease-elegant), border-color 0.5s;
+}
+
+.open:hover,
+.open:focus-visible {
+  background: var(--color-button);
+  border-color: var(--color-button);
+  color: var(--color-button-text);
+}
+
+/* Petalos abstractos muy sutiles */
+.petals {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.petal {
+  position: absolute;
+  top: -5%;
+  left: calc(8% + var(--i) * 10.5%);
+  width: 9px;
+  height: 14px;
+  border-radius: 80% 0 80% 0;
+  background: color-mix(in srgb, var(--color-line) 70%, transparent);
+  opacity: 0;
+  animation: fall calc(9s + var(--i) * 0.8s) linear calc(var(--i) * -1.3s) infinite;
+}
+
+.petal:nth-child(odd) {
+  width: 6px;
+  height: 10px;
+  background: color-mix(in srgb, var(--color-accent) 45%, transparent);
+}
+
+@keyframes fall {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+  15% {
+    opacity: 0.55;
+  }
+  85% {
+    opacity: 0.4;
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(40px, 110vh, 0) rotate(260deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .petals {
+    display: none;
+  }
+}

@@ -1,0 +1,49 @@
+.page {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 1.5rem 1rem;
+  background:
+    radial-gradient(circle at 15% 10%, #e9ecdf 0%, transparent 45%),
+    radial-gradient(circle at 85% 90%, #f1e8d8 0%, transparent 45%),
+    var(--a-bg);
+}
+
+.card {
+  width: 100%;
+  max-width: 24rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 2rem 1.5rem;
+  background: var(--a-surface);
+  border: 1px solid var(--a-border);
+  border-radius: 16px;
+  box-shadow: 0 30px 60px -30px rgb(20 24 16 / 0.25);
+}
+
+.mark {
+  display: grid;
+  place-items: center;
+  width: 3rem;
+  height: 3rem;
+  margin: 0 auto;
+  border-radius: 12px;
+  background: var(--a-primary-soft);
+  color: var(--a-primary);
+}
+
+.title {
+  margin: 0;
+  text-align: center;
+  font-family: var(--font-heading);
+  font-size: 1.8rem;
+  font-weight: 500;
+}
+
+.subtitle {
+  margin: -0.6rem 0 0.5rem;
+  text-align: center;
+  color: var(--a-muted);
+  font-size: 0.9rem;
+}

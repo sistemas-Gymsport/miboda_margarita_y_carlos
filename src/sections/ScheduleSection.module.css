@@ -1,0 +1,110 @@
+.section {
+  padding: var(--space-section) var(--gutter);
+  background: var(--color-surface);
+}
+
+.timeline {
+  position: relative;
+  max-width: 54rem;
+  margin: 0 auto;
+}
+
+.track {
+  position: absolute;
+  top: 0.5rem;
+  bottom: 0.5rem;
+  left: 1.5rem;
+  width: 1px;
+  background: color-mix(in srgb, var(--color-line) 35%, transparent);
+}
+
+.trackFill {
+  position: absolute;
+  inset: 0;
+  background: var(--color-accent);
+  transform-origin: top;
+}
+
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2.6rem;
+}
+
+.item {
+  position: relative;
+  display: grid;
+  grid-template-columns: 3rem 1fr;
+  gap: 1.2rem;
+  align-items: start;
+}
+
+.marker {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background: var(--color-background);
+  border: 1px solid var(--color-line);
+  color: var(--color-primary);
+  box-shadow: 0 0 0 6px var(--color-surface);
+}
+
+.card {
+  padding-top: 0.1rem;
+}
+
+.time {
+  display: block;
+  font-size: var(--text-xs);
+  letter-spacing: 0.3em;
+  color: var(--color-accent);
+  font-weight: 600;
+}
+
+.title {
+  margin-top: 0.3rem;
+  font-size: clamp(1.7rem, 1.3rem + 1.6vw, 2.4rem);
+  font-weight: 400;
+}
+
+.description {
+  margin-top: 0.4rem;
+  color: var(--color-muted);
+  font-weight: 300;
+}
+
+@media (min-width: 768px) {
+  .track {
+    left: 50%;
+  }
+
+  .item {
+    grid-template-columns: 1fr 3.5rem 1fr;
+    gap: 2.5rem;
+  }
+
+  .marker {
+    grid-column: 2;
+    grid-row: 1;
+    width: 3.5rem;
+    height: 3.5rem;
+  }
+
+  .left .card {
+    grid-column: 1;
+    grid-row: 1;
+    text-align: right;
+  }
+
+  .right .card {
+    grid-column: 3;
+    grid-row: 1;
+  }
+}

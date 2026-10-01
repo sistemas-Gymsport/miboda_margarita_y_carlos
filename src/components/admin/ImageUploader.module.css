@@ -1,0 +1,34 @@
+.zone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 2rem 1rem;
+  border: 2px dashed var(--a-border-strong);
+  border-radius: var(--a-radius);
+  background: var(--a-surface);
+  color: var(--a-primary);
+  text-align: center;
+  transition: border-color 0.15s, background 0.15s;
+}
+
+.dragging {
+  border-color: var(--a-primary);
+  background: var(--a-primary-soft);
+}
+
+.disabled {
+  opacity: 0.6;
+}
+
+.title {
+  margin: 0;
+  font-weight: 600;
+  color: var(--a-text);
+}
+
+.hint {
+  margin: 0 0 0.5rem;
+  font-size: 0.82rem;
+  color: var(--a-muted);
+}

@@ -1,0 +1,87 @@
+.section {
+  padding: var(--space-section) var(--gutter);
+  background:
+    linear-gradient(180deg, var(--color-background) 0%, var(--color-surface) 100%);
+}
+
+.card {
+  position: relative;
+  max-width: 40rem;
+  margin: 0 auto;
+  padding: clamp(3rem, 9vw, 4.5rem) clamp(1.25rem, 6vw, 3.5rem);
+  background: var(--color-background);
+  border: 1px solid color-mix(in srgb, var(--color-line) 55%, transparent);
+  text-align: center;
+  box-shadow: 0 40px 80px -60px color-mix(in srgb, var(--color-text) 50%, transparent);
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  inset: 0.6rem;
+  border: 1px solid color-mix(in srgb, var(--color-line) 28%, transparent);
+  pointer-events: none;
+}
+
+.deadline {
+  margin: -1.5rem 0 2rem;
+  font-size: var(--text-xs);
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  font-weight: 600;
+}
+
+.form {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.75rem;
+  max-width: 24rem;
+  margin: 0 auto;
+}
+
+.label {
+  font-size: var(--text-xs);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.input {
+  width: 100%;
+  padding: 0.9rem 0.25rem;
+  border: 0;
+  border-bottom: 1px solid var(--color-line);
+  background: transparent;
+  font-family: var(--font-heading);
+  font-size: 1.3rem;
+  text-align: center;
+  color: var(--color-text);
+  transition: border-color 0.4s;
+}
+
+.input::placeholder {
+  color: color-mix(in srgb, var(--color-muted) 60%, transparent);
+  font-style: italic;
+}
+
+.input:focus {
+  outline: none;
+  border-bottom-color: var(--color-accent);
+}
+
+.input:focus-visible {
+  outline: none;
+  box-shadow: 0 2px 0 0 var(--color-accent);
+}
+
+.button {
+  margin-top: 1.25rem;
+}
+
+.pending {
+  color: var(--color-muted);
+  font-style: italic;
+}

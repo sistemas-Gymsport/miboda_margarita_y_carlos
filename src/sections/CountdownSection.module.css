@@ -1,0 +1,118 @@
+.section {
+  position: relative;
+  padding: var(--space-section) var(--gutter);
+  background:
+    radial-gradient(ellipse at 50% 0%, color-mix(in srgb, var(--color-secondary) 45%, transparent), transparent 65%),
+    var(--color-primary);
+  color: var(--color-background);
+  overflow: hidden;
+}
+
+.section::before,
+.section::after {
+  content: '';
+  position: absolute;
+  width: 26rem;
+  aspect-ratio: 1;
+  border: 1px solid color-mix(in srgb, var(--color-line) 30%, transparent);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.section::before {
+  top: -14rem;
+  left: -12rem;
+}
+
+.section::after {
+  bottom: -16rem;
+  right: -12rem;
+}
+
+.inner {
+  position: relative;
+  max-width: 52rem;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem;
+}
+
+.unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 1.1rem 0.25rem;
+  border-top: 1px solid color-mix(in srgb, var(--color-line) 45%, transparent);
+  border-bottom: 1px solid color-mix(in srgb, var(--color-line) 45%, transparent);
+}
+
+.value {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  height: 1.1em;
+  font-family: var(--font-heading);
+  font-size: clamp(2.4rem, 1.4rem + 6vw, 5rem);
+  font-weight: 300;
+  line-height: 1.1;
+  font-variant-numeric: tabular-nums;
+}
+
+.value span {
+  display: block;
+}
+
+.label {
+  font-size: 0.6rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--color-background) 72%, transparent);
+  padding-left: 0.3em;
+}
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 3rem;
+}
+
+.date {
+  font-family: var(--font-heading);
+  font-size: clamp(1.3rem, 1.1rem + 1vw, 1.7rem);
+  font-style: italic;
+  font-weight: 300;
+}
+
+.date::first-letter {
+  text-transform: uppercase;
+}
+
+.time {
+  margin-bottom: 1.8rem;
+  font-size: var(--text-xs);
+  letter-spacing: 0.34em;
+  color: color-mix(in srgb, var(--color-background) 72%, transparent);
+}
+
+@media (min-width: 640px) {
+  .grid {
+    gap: 1.25rem;
+  }
+
+  .unit {
+    padding: 1.6rem 0.5rem;
+  }
+
+  .label {
+    font-size: 0.68rem;
+  }
+}

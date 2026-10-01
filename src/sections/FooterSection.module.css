@@ -1,0 +1,121 @@
+.footer {
+  background: var(--color-overlay);
+  color: #fff;
+}
+
+.closing {
+  position: relative;
+  min-height: 92svh;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.media {
+  position: absolute;
+  inset: -12% 0 0;
+  z-index: -2;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(ellipse at center, color-mix(in srgb, var(--color-overlay) 45%, transparent), color-mix(in srgb, var(--color-overlay) 85%, transparent)),
+    color-mix(in srgb, var(--color-overlay) 35%, transparent);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.1rem;
+  max-width: 40rem;
+  padding: var(--space-section) var(--gutter);
+  text-align: center;
+}
+
+.eyebrow {
+  font-size: var(--text-xs);
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--color-line) 70%, white);
+}
+
+.message {
+  font-family: var(--font-heading);
+  font-size: var(--display-sm);
+  font-weight: 300;
+  line-height: 1.2;
+  text-wrap: balance;
+}
+
+.ornament {
+  color: color-mix(in srgb, var(--color-line) 70%, white);
+}
+
+.signature {
+  font-size: var(--text-xs);
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  opacity: 0.85;
+}
+
+.names {
+  font-family: var(--font-heading);
+  font-size: var(--display-md);
+  font-weight: 300;
+  line-height: 1.05;
+}
+
+.names span {
+  font-style: italic;
+  color: color-mix(in srgb, var(--color-line) 70%, white);
+}
+
+.date {
+  font-size: var(--text-sm);
+  letter-spacing: 0.12em;
+  opacity: 0.85;
+}
+
+.date::first-letter {
+  text-transform: uppercase;
+}
+
+.bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.4rem var(--gutter) max(1.4rem, env(safe-area-inset-bottom));
+  border-top: 1px solid rgb(255 255 255 / 0.12);
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgb(255 255 255 / 0.65);
+}
+
+.top {
+  display: grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  flex-shrink: 0;
+  border: 1px solid rgb(255 255 255 / 0.3);
+  border-radius: 50%;
+  color: #fff;
+  transition: background 0.4s, transform 0.4s var(--ease-elegant);
+}
+
+.top:hover {
+  background: rgb(255 255 255 / 0.1);
+  transform: translateY(-3px);
+}

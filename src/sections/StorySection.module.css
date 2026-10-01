@@ -1,0 +1,56 @@
+.section {
+  position: relative;
+  padding: var(--space-section) var(--gutter);
+  overflow: hidden;
+}
+
+.inner {
+  position: relative;
+  max-width: 44rem;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.branch {
+  position: absolute;
+  top: 3rem;
+  right: -1.5rem;
+  width: 5.5rem;
+  fill: none;
+  stroke: var(--color-line);
+  stroke-width: 0.9;
+  opacity: 0.45;
+  pointer-events: none;
+}
+
+.message {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  font-family: var(--font-heading);
+  font-size: clamp(1.35rem, 1.1rem + 1.2vw, 1.9rem);
+  font-weight: 300;
+  line-height: 1.5;
+  color: var(--color-text);
+  text-wrap: pretty;
+}
+
+.quote {
+  margin: 3rem auto 0;
+  padding-top: 2rem;
+  max-width: 24rem;
+  border-top: 1px solid color-mix(in srgb, var(--color-line) 60%, transparent);
+  font-size: var(--text-xs);
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+@media (min-width: 768px) {
+  .branch {
+    right: 6%;
+    width: 7rem;
+    top: 4rem;
+    opacity: 0.8;
+  }
+}

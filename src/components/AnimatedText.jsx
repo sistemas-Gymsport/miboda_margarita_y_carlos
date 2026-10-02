@@ -42,7 +42,7 @@ export default function AnimatedText({ id, text = '', as = 'h2', className, stag
       custom={{ stagger, delay }}
     >
       {words.map((w, i) => (
-        <span key={`${w}-${i}`} aria-hidden="true" style={{ display: 'inline-block', overflow: 'hidden', verticalAlign: 'top', paddingBottom: '0.08em' }}>
+        <span key={`${w}-${i}`} aria-hidden="true" style={{ display: 'inline-block', verticalAlign: 'top', padding: '0 0.04em 0.08em' }}>
           <motion.span style={{ display: 'inline-block' }} variants={word}>
             {w}
           </motion.span>

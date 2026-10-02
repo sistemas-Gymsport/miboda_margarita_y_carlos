@@ -12,7 +12,7 @@ export default function SectionHeading({ eyebrow, title, subtitle, id, light = f
           {eyebrow}
         </RevealSection>
       ) : null}
-      {title ? <AnimatedText id={id} text={title} as="h2" className={styles.title} /> : null}
+      {title ? <AnimatedText id={id} text={title} as="h2" className={`${styles.title} script gold-text`} /> : null}
       <Ornament className={styles.ornament} color={light ? 'currentColor' : undefined} />
       {subtitle ? (
         <RevealSection as="p" className={styles.subtitle} delay={0.2}>

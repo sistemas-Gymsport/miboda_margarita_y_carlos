@@ -18,14 +18,14 @@
   font-size: var(--text-xs);
   letter-spacing: 0.38em;
   text-transform: uppercase;
-  color: var(--color-accent);
-  font-weight: 500;
+  color: var(--color-primary);
+  font-weight: 600;
 }
 
 .title {
-  font-size: var(--display-md);
-  font-weight: 300;
-  color: var(--color-text);
+  padding: 0 0.12em;
+  font-size: clamp(3rem, 2rem + 5vw, 5rem);
+  line-height: 1.2;
   text-wrap: balance;
 }
 

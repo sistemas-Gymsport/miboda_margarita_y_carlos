@@ -3,6 +3,7 @@ import { MessageCircle } from 'lucide-react';
 import SectionHeading from '../components/SectionHeading';
 import RevealSection from '../components/RevealSection';
 import ElegantButton from '../components/ElegantButton';
+import FloralCorner from '../components/decor/FloralCorner';
 import { buildWhatsappUrl } from '../utils/whatsapp';
 import styles from './RSVPSection.module.css';
 
@@ -25,6 +26,8 @@ export default function RSVPSection({ whatsapp }) {
 
   return (
     <section className={styles.section} aria-labelledby="rsvp-title">
+      <FloralCorner corner="tr" />
+      <FloralCorner corner="bl" delay={0.3} />
       <div className={styles.card}>
         <SectionHeading id="rsvp-title" title={whatsapp.title} subtitle={whatsapp.description} />
 

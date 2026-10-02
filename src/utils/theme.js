@@ -1,5 +1,13 @@
 /** Paletas predeterminadas (el administrador puede personalizarlas despues). */
 export const PALETTES = {
+  dorado: {
+    name: 'Marfil y oro',
+    colors: {
+      colorBackground: '#FDFBF6', colorSurface: '#F8F3E8', colorPrimary: '#6B5222', colorSecondary: '#A88B52',
+      colorAccent: '#C29A3F', colorText: '#4A3B22', colorMuted: '#7D6B4F', colorButton: '#B08A3E',
+      colorButtonText: '#FFFFFF', colorLine: '#D9C38F', heroOverlay: '#3A2E18',
+    },
+  },
   olivo: {
     name: 'Olivo elegante',
     colors: {
@@ -85,6 +93,8 @@ export function googleFontsUrl(heading, body) {
   const b = BODY_FONTS[body];
   if (h) families.push(`family=${encodeURIComponent(heading).replace(/%20/g, '+')}:${h.query}`);
   if (b) families.push(`family=${encodeURIComponent(body).replace(/%20/g, '+')}:${b.query}`);
+  // Fuente manuscrita fija para nombres y titulos (estilo invitacion clasica).
+  families.push('family=Great+Vibes');
   return `https://fonts.googleapis.com/css2?${families.join('&')}&display=swap`;
 }
 
@@ -109,7 +119,7 @@ export function applyTheme(theme, target = document.documentElement) {
   target.style.setProperty('--overlay-opacity', String(theme.heroOverlayOpacity ?? 0.45));
 
   const heading = HEADING_FONTS[theme.fontHeading] ? theme.fontHeading : 'Cormorant Garamond';
-  const body = BODY_FONTS[theme.fontBody] ? theme.fontBody : 'Manrope';
+  const body = BODY_FONTS[theme.fontBody] ? theme.fontBody : 'Montserrat';
   target.style.setProperty('--font-heading', `'${heading}', ${HEADING_FONTS[heading].fallback}`);
   target.style.setProperty('--font-body', `'${body}', ${BODY_FONTS[body].fallback}`);
 

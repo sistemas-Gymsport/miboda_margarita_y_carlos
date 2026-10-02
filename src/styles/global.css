@@ -4,21 +4,34 @@
    ========================================================== */
 
 :root {
-  --color-background: #f7f5ef;
-  --color-surface: #eeebe1;
-  --color-primary: #5b6342;
-  --color-secondary: #8c9270;
-  --color-accent: #b59b6a;
-  --color-text: #2c2e24;
-  --color-muted: #6e705f;
-  --color-button: #5b6342;
-  --color-button-text: #f7f5ef;
-  --color-line: #c9b892;
-  --color-overlay: #1e2117;
+  --color-background: #fdfbf6;
+  --color-surface: #f8f3e8;
+  --color-primary: #6b5222;
+  --color-secondary: #a88b52;
+  --color-accent: #c29a3f;
+  --color-text: #4a3b22;
+  --color-muted: #7d6b4f;
+  --color-button: #b08a3e;
+  --color-button-text: #ffffff;
+  --color-line: #d9c38f;
+  --color-overlay: #3a2e18;
   --overlay-opacity: 0.45;
 
   --font-heading: 'Cormorant Garamond', 'Times New Roman', serif;
-  --font-body: 'Manrope', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-body: 'Montserrat', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  --font-script: 'Great Vibes', 'Brush Script MT', cursive;
+
+  /* Oro: degradado derivado del color de acento */
+  --gold-gradient: linear-gradient(
+    100deg,
+    color-mix(in srgb, var(--color-accent) 62%, black) 0%,
+    var(--color-accent) 22%,
+    color-mix(in srgb, var(--color-accent) 35%, #fff6d6) 42%,
+    var(--color-accent) 60%,
+    color-mix(in srgb, var(--color-accent) 70%, black) 82%,
+    var(--color-accent) 100%
+  );
 
   --ease-elegant: cubic-bezier(0.22, 1, 0.36, 1);
   --ease-soft: cubic-bezier(0.4, 0, 0.2, 1);
@@ -147,6 +160,57 @@ button {
 
 .skip-link:focus {
   transform: translateY(0);
+}
+
+/* ---------- Estilo invitacion: papel, oro y caligrafia ---------- */
+
+/* Textura sutil de papel sobre toda la pagina */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.35;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.55 0 0 0 0 0.48 0 0 0 0 0.36 0 0 0 0.09 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+body.admin::before {
+  display: none;
+}
+
+/* Texto con degradado dorado. Se aplica tambien a los spans de AnimatedText. */
+.gold-text,
+.gold-text span {
+  background: var(--gold-gradient);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+.gold-shimmer,
+.gold-shimmer span {
+  animation: goldShimmer 6s ease-in-out infinite;
+}
+
+.script {
+  font-family: var(--font-script);
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.2;
+}
+
+@keyframes goldShimmer {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

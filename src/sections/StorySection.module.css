@@ -11,16 +11,49 @@
   text-align: center;
 }
 
-.branch {
+/* Marco de arco dorado para la fotografia principal */
+.frame {
+  position: relative;
+  width: min(75vw, 22rem);
+  margin: 0 auto 3rem;
+}
+
+.arch {
+  position: relative;
+  padding: 0.55rem;
+  border: 1px solid var(--color-accent);
+  border-radius: 999px 999px 4px 4px;
+  background: rgb(255 255 255 / 0.6);
+  box-shadow: 0 30px 60px -40px color-mix(in srgb, var(--color-primary) 60%, transparent);
+}
+
+.arch::after {
+  content: '';
   position: absolute;
-  top: 3rem;
-  right: -1.5rem;
-  width: 5.5rem;
-  fill: none;
-  stroke: var(--color-line);
-  stroke-width: 0.9;
-  opacity: 0.45;
+  inset: -0.5rem;
+  border: 1px solid color-mix(in srgb, var(--color-line) 70%, transparent);
+  border-radius: 999px 999px 8px 8px;
   pointer-events: none;
+}
+
+.photo {
+  /* La proporcion real de la foto se aplica en linea (sin recortes). */
+  border-radius: 999px 999px 2px 2px;
+}
+
+.frameFlowerLeft,
+.frameFlowerRight {
+  position: absolute;
+  bottom: -1.5rem;
+  z-index: 1;
+}
+
+.frameFlowerLeft {
+  left: -2.6rem;
+}
+
+.frameFlowerRight {
+  right: -2.6rem;
 }
 
 .message {
@@ -29,28 +62,15 @@
   gap: 1.2rem;
   font-family: var(--font-heading);
   font-size: clamp(1.35rem, 1.1rem + 1.2vw, 1.9rem);
-  font-weight: 300;
+  font-style: italic;
+  font-weight: 400;
   line-height: 1.5;
-  color: var(--color-text);
+  color: var(--color-primary);
   text-wrap: pretty;
 }
 
 .quote {
-  margin: 3rem auto 0;
-  padding-top: 2rem;
-  max-width: 24rem;
-  border-top: 1px solid color-mix(in srgb, var(--color-line) 60%, transparent);
-  font-size: var(--text-xs);
-  letter-spacing: 0.34em;
-  text-transform: uppercase;
-  color: var(--color-muted);
-}
-
-@media (min-width: 768px) {
-  .branch {
-    right: 6%;
-    width: 7rem;
-    top: 4rem;
-    opacity: 0.8;
-  }
+  margin: 2.6rem auto 0;
+  padding: 0 0.1em;
+  font-size: clamp(2.2rem, 1.6rem + 3vw, 3.2rem);
 }

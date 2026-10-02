@@ -10,9 +10,11 @@ export const CONTENT_GROUPS = [
   {
     title: 'Portada',
     fields: [
-      { key: 'heroEyebrow', label: 'Frase superior', hint: 'Ejemplo: Nos casamos' },
+      { key: 'heroEyebrow', label: 'Título en caligrafía', hint: 'Ejemplo: Nuestra Boda' },
       { key: 'heroSubtitle', label: 'Subtítulo' },
       { key: 'heroDateText', label: 'Fecha personalizada', hint: 'Déjalo vacío para mostrar la fecha configurada automáticamente.' },
+      { key: 'heroConfirmText', label: 'Texto sobre los teléfonos', hint: 'Los teléfonos se configuran en WhatsApp.' },
+      { key: 'heroClosing', label: 'Despedida en caligrafía', hint: 'Ejemplo: Te esperamos' },
       { key: 'heroScrollHint', label: 'Indicador de desplazamiento' },
     ],
   },

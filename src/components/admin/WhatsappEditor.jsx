@@ -36,6 +36,15 @@ export default function WhatsappEditor() {
             value={values.phone}
             onChange={(v) => setField('phone', v.replace(/\D/g, '').slice(0, 15))}
           />
+          <Field
+            className="a-span-2"
+            label="Teléfono adicional (opcional)"
+            type="tel"
+            inputMode="numeric"
+            hint="Se muestra junto al principal en la portada. La confirmación con nombre usa el principal."
+            value={values.phoneSecondary}
+            onChange={(v) => setField('phoneSecondary', v.replace(/\D/g, '').slice(0, 15))}
+          />
         </div>
       </section>
 

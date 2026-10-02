@@ -1,46 +1,44 @@
-import { useRef } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ArrowUp, Lock } from 'lucide-react';
 import AnimatedText from '../components/AnimatedText';
-import CldImage from '../components/CldImage';
 import Ornament from '../components/Ornament';
 import RevealSection from '../components/RevealSection';
+import FloralCorner from '../components/decor/FloralCorner';
+import GoldRings from '../components/decor/GoldRings';
 import { formatLongDate } from '../utils/date';
 import styles from './FooterSection.module.css';
 
-/** Mensaje final con nombres, fecha y fotografia de fondo con parallax suave. */
-export default function FooterSection({ wedding, content, image, showClosing = true }) {
-  const ref = useRef(null);
-  const { scrollYProgress } = useScroll({ target: ref, offset: ['start end', 'end end'] });
-  const y = useTransform(scrollYProgress, [0, 1], ['-12%', '0%']);
-
+/** Mensaje final en papel marfil con flores, anillos y los nombres en oro. */
+export default function FooterSection({ wedding, content, showClosing = true }) {
   return (
-    <footer ref={ref} className={styles.footer}>
+    <footer className={styles.footer}>
       {showClosing ? (
         <div className={styles.closing}>
-          {image ? (
-            <motion.div className={styles.media} style={{ y }} aria-hidden="true">
-              <CldImage src={image.url} alt="" sizes="100vw" widths={[640, 1080, 1600]} width={1600} className={styles.image} />
-            </motion.div>
-          ) : null}
-          <div className={styles.overlay} aria-hidden="true" />
+          <FloralCorner corner="tl" />
+          <FloralCorner corner="tr" delay={0.2} />
+          <FloralCorner corner="bl" delay={0.4} />
+          <FloralCorner corner="br" delay={0.6} />
 
           <div className={styles.content}>
             <RevealSection as="p" className={styles.eyebrow}>
               {content.closingEyebrow}
             </RevealSection>
             <AnimatedText as="p" text={content.closingMessage} className={styles.message} />
-            <Ornament color="currentColor" className={styles.ornament} />
-            <RevealSection as="p" className={styles.signature} delay={0.2}>
-              {content.closingSignature}
+            <Ornament className={styles.ornament} />
+            <RevealSection delay={0.2}>
+              <GoldRings className={styles.rings} />
             </RevealSection>
-            <RevealSection as="p" className={styles.names} delay={0.35}>
-              {wedding.partnerOne} <span>&amp;</span> {wedding.partnerTwo}
+            <RevealSection as="p" className={`${styles.names} script gold-text gold-shimmer`} delay={0.35}>
+              {wedding.partnerOne} &amp; {wedding.partnerTwo}
             </RevealSection>
             <RevealSection as="p" className={styles.date} delay={0.5}>
               {formatLongDate(wedding.weddingDate, wedding.timezone)}
             </RevealSection>
+            {content.closingSignature ? (
+              <RevealSection as="p" className={`${styles.signature} script gold-text`} delay={0.65}>
+                {content.closingSignature}
+              </RevealSection>
+            ) : null}
           </div>
         </div>
       ) : null}

@@ -1,25 +1,33 @@
 import { useEffect } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
+import FloralCorner from '../components/decor/FloralCorner';
+import GoldRings from '../components/decor/GoldRings';
 import styles from './IntroOverlay.module.css';
 
 const ease = [0.22, 1, 0.36, 1];
-const AUTO_CLOSE_MS = 5200;
+const AUTO_CLOSE_MS = 7200;
 
-const reveal = (delay) => ({
-  initial: { opacity: 0, y: 18, filter: 'blur(14px)' },
+const fade = (delay) => ({
+  initial: { opacity: 0, y: 14, filter: 'blur(10px)' },
   animate: { opacity: 1, y: 0, filter: 'blur(0px)', transition: { duration: 1.4, ease, delay } },
 });
 
+// Revelado de izquierda a derecha, como si la caligrafia se escribiera.
+const write = (delay, duration = 2) => ({
+  initial: { clipPath: 'inset(0% 100% 0% 0%)', opacity: 1 },
+  animate: { clipPath: 'inset(0% 0% 0% 0%)', transition: { duration, ease: [0.65, 0, 0.35, 1], delay } },
+});
+
 /**
- * Introduccion: nombres que pasan de desenfoque a enfoque, lineas que se dibujan
- * y una cortina que revela la invitacion. Se puede omitir con un clic o tecla.
+ * Introduccion inspirada en la invitacion impresa: flores que florecen en las esquinas,
+ * anillos dorados que se entrelazan, "Nuestra Boda" escrito a mano y los nombres en oro.
  */
 export default function IntroOverlay({ wedding, content, dateLabel, onFinish }) {
   const reduce = useReducedMotion();
 
   useEffect(() => {
     document.body.classList.add('is-locked');
-    const timer = setTimeout(onFinish, reduce ? 2200 : AUTO_CLOSE_MS);
+    const timer = setTimeout(onFinish, reduce ? 2500 : AUTO_CLOSE_MS);
     const onKey = (e) => {
       if (e.key === 'Enter' || e.key === ' ' || e.key === 'Escape') onFinish();
     };
@@ -42,52 +50,27 @@ export default function IntroOverlay({ wedding, content, dateLabel, onFinish }) 
       exit={
         reduce
           ? { opacity: 0, transition: { duration: 0.6 } }
-          : { clipPath: 'inset(0% 0% 100% 0%)', transition: { duration: 1.25, ease: [0.76, 0, 0.24, 1] } }
+          : { opacity: 0, scale: 1.08, filter: 'blur(6px)', transition: { duration: 1.3, ease: [0.65, 0, 0.35, 1] } }
       }
-      style={{ clipPath: 'inset(0% 0% 0% 0%)' }}
     >
-      <div className={styles.petals} aria-hidden="true">
-        {Array.from({ length: 9 }).map((_, i) => (
-          <span key={i} className={styles.petal} style={{ '--i': i }} />
-        ))}
-      </div>
+      <FloralCorner corner="tl" delay={0} />
+      <FloralCorner corner="tr" delay={0.25} />
+      <FloralCorner corner="bl" delay={0.5} />
+      <FloralCorner corner="br" delay={0.75} />
 
-      <motion.div
-        className={styles.content}
-        exit={reduce ? undefined : { y: -60, opacity: 0, transition: { duration: 0.8, ease } }}
-      >
-        <motion.p className={styles.eyebrow} {...reveal(0.2)}>
-          {content.introEyebrow}
+      <div className={styles.content}>
+        <GoldRings className={styles.rings} delay={0.6} />
+
+        <motion.p className={`${styles.title} script`} {...write(1.9, 1.8)}>
+          {content.heroEyebrow || 'Nuestra Boda'}
         </motion.p>
 
-        <motion.span className={styles.name} {...reveal(0.5)}>
-          {wedding.partnerOne}
-        </motion.span>
-
-        <div className={styles.ampersandRow} aria-hidden="true">
-          <motion.span
-            className={styles.line}
-            initial={{ scaleX: 0 }}
-            animate={{ scaleX: 1, transition: { duration: 1.4, ease, delay: 1 } }}
-            style={{ originX: 1 }}
-          />
-          <motion.span className={styles.ampersand} {...reveal(0.9)}>
-            &amp;
-          </motion.span>
-          <motion.span
-            className={styles.line}
-            initial={{ scaleX: 0 }}
-            animate={{ scaleX: 1, transition: { duration: 1.4, ease, delay: 1 } }}
-            style={{ originX: 0 }}
-          />
-        </div>
-
-        <motion.span className={styles.name} {...reveal(1.2)}>
-          {wedding.partnerTwo}
-        </motion.span>
+        <motion.p className={`${styles.names} script gold-text gold-shimmer`} {...write(3, 2.2)}>
+          {wedding.partnerOne} &amp; {wedding.partnerTwo}
+        </motion.p>
 
         {dateLabel ? (
-          <motion.p className={styles.date} {...reveal(1.7)}>
+          <motion.p className={styles.date} {...fade(4.6)}>
             {dateLabel}
           </motion.p>
         ) : null}
@@ -99,13 +82,19 @@ export default function IntroOverlay({ wedding, content, dateLabel, onFinish }) 
             e.stopPropagation();
             onFinish();
           }}
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0, transition: { duration: 1, ease, delay: 2.3 } }}
+          {...fade(5)}
           autoFocus
         >
           {content.introButton}
         </motion.button>
-      </motion.div>
+      </div>
+
+      {/* Destellos dorados flotando */}
+      <div className={styles.sparkles} aria-hidden="true">
+        {Array.from({ length: 14 }).map((_, i) => (
+          <span key={i} style={{ '--i': i }} />
+        ))}
+      </div>
     </motion.div>
   );
 }

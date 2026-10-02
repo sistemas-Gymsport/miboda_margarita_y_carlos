@@ -1,0 +1,72 @@
+/* Esquinas florales */
+.corner {
+  position: absolute;
+  z-index: 0;
+  width: clamp(10.5rem, 50vw, 22rem);
+  pointer-events: none;
+}
+
+.cornerSvg {
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.tl {
+  top: 0;
+  left: 0;
+  transform: translate(-14%, -14%);
+}
+
+.tr {
+  top: 0;
+  right: 0;
+  transform: translate(14%, -14%) scaleX(-1);
+}
+
+.bl {
+  bottom: 0;
+  left: 0;
+  transform: translate(-14%, 14%) scaleY(-1);
+}
+
+.br {
+  bottom: 0;
+  right: 0;
+  transform: translate(14%, 14%) scale(-1, -1);
+}
+
+/* Balanceo suave de los botones colgantes */
+.sway {
+  animation: sway 6s ease-in-out infinite alternate;
+}
+
+@keyframes sway {
+  from {
+    transform: rotate(-2.5deg);
+  }
+  to {
+    transform: rotate(2.5deg);
+  }
+}
+
+/* Flor de linea dorada */
+.lineFlower {
+  width: clamp(3.5rem, 12vw, 6rem);
+  height: auto;
+  overflow: visible;
+}
+
+/* Anillos */
+.rings {
+  width: clamp(9rem, 44vw, 15rem);
+  height: auto;
+  overflow: visible;
+  filter: drop-shadow(0 10px 14px rgb(90 66 16 / 0.18));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sway {
+    animation: none;
+  }
+}

@@ -1,4 +1,7 @@
 .section {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
   padding: var(--space-section) var(--gutter);
   background:
     linear-gradient(180deg, var(--color-background) 0%, var(--color-surface) 100%);
@@ -6,6 +9,7 @@
 
 .card {
   position: relative;
+  z-index: 2;
   max-width: 40rem;
   margin: 0 auto;
   padding: clamp(3rem, 9vw, 4.5rem) clamp(1.25rem, 6vw, 3.5rem);

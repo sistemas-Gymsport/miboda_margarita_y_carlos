@@ -37,7 +37,9 @@
 }
 
 .solid {
-  background: var(--color-button);
+  border-color: color-mix(in srgb, var(--color-button) 80%, black);
+  background: var(--gold-gradient);
+  background-size: 160% 100%;
   color: var(--color-button-text);
   box-shadow: 0 10px 30px -14px color-mix(in srgb, var(--color-button) 70%, transparent);
 }

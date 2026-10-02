@@ -44,7 +44,6 @@ export default function InvitationLayout({ invitation }) {
   const parts = getDateParts(wedding.weddingDate, wedding.timezone);
   const dateLabel = content.heroDateText || (parts ? `${parts.day} · ${parts.month} · ${parts.year}` : '');
   const ceremony = locations.find((l) => l.type === 'CEREMONY') || locations[0];
-  const closingImage = gallery.find((img) => !img.isMain) || wedding.mainImage;
 
   return (
     <>
@@ -58,8 +57,8 @@ export default function InvitationLayout({ invitation }) {
       </AnimatePresence>
 
       <main id="top">
-        <HeroSection wedding={wedding} content={content} ready={heroReady || !showIntro} />
-        {sections.story !== false ? <StorySection content={content} /> : <div id="contenido" />}
+        <HeroSection wedding={wedding} content={content} ready={heroReady || !showIntro} ceremony={ceremony} whatsapp={whatsapp} />
+        {sections.story !== false ? <StorySection content={content} image={wedding.mainImage} names={`${wedding.partnerOne} y ${wedding.partnerTwo}`} /> : <div id="contenido" />}
         {sections.countdown !== false ? <CountdownSection wedding={wedding} content={content} ceremony={ceremony} /> : null}
         {sections.schedule !== false ? <ScheduleSection items={schedule} content={content} /> : null}
         {sections.locations !== false ? <LocationSection locations={locations} content={content} /> : null}
@@ -70,7 +69,7 @@ export default function InvitationLayout({ invitation }) {
         {sections.bank !== false ? <BankInfoSection bank={bankInfo} /> : null}
       </main>
 
-      <FooterSection wedding={wedding} content={content} image={closingImage} showClosing={sections.closing !== false} />
+      <FooterSection wedding={wedding} content={content} showClosing={sections.closing !== false} />
     </>
   );
 }

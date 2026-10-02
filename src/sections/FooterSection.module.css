@@ -1,6 +1,7 @@
 .footer {
-  background: var(--color-overlay);
-  color: #fff;
+  position: relative;
+  background: var(--color-background);
+  color: var(--color-text);
 }
 
 .closing {
@@ -10,33 +11,16 @@
   place-items: center;
   overflow: hidden;
   isolation: isolate;
-}
-
-.media {
-  position: absolute;
-  inset: -12% 0 0;
-  z-index: -2;
-}
-
-.image {
-  width: 100%;
-  height: 100%;
-}
-
-.overlay {
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  background:
-    radial-gradient(ellipse at center, color-mix(in srgb, var(--color-overlay) 45%, transparent), color-mix(in srgb, var(--color-overlay) 85%, transparent)),
-    color-mix(in srgb, var(--color-overlay) 35%, transparent);
+  background: radial-gradient(ellipse at 50% 50%, #fffefb 0%, transparent 70%), var(--color-surface);
 }
 
 .content {
+  position: relative;
+  z-index: 2;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1.1rem;
+  gap: 1rem;
   max-width: 40rem;
   padding: var(--space-section) var(--gutter);
   text-align: center;
@@ -44,50 +28,52 @@
 
 .eyebrow {
   font-size: var(--text-xs);
-  letter-spacing: 0.42em;
+  font-weight: 600;
+  letter-spacing: 0.4em;
   text-transform: uppercase;
-  color: color-mix(in srgb, var(--color-line) 70%, white);
+  color: var(--color-primary);
 }
 
 .message {
   font-family: var(--font-heading);
-  font-size: var(--display-sm);
-  font-weight: 300;
-  line-height: 1.2;
+  font-size: clamp(1.6rem, 1.2rem + 2vw, 2.4rem);
+  font-style: italic;
+  font-weight: 500;
+  line-height: 1.3;
+  color: var(--color-primary);
   text-wrap: balance;
 }
 
 .ornament {
-  color: color-mix(in srgb, var(--color-line) 70%, white);
+  color: var(--color-line);
 }
 
-.signature {
-  font-size: var(--text-xs);
-  letter-spacing: 0.32em;
-  text-transform: uppercase;
-  opacity: 0.85;
+.rings {
+  width: clamp(7rem, 30vw, 10rem);
+  margin-top: 0.6rem;
 }
 
 .names {
-  font-family: var(--font-heading);
-  font-size: var(--display-md);
-  font-weight: 300;
-  line-height: 1.05;
-}
-
-.names span {
-  font-style: italic;
-  color: color-mix(in srgb, var(--color-line) 70%, white);
+  padding: 0 0.12em;
+  font-size: clamp(2.8rem, 1.6rem + 6vw, 4.8rem);
+  line-height: 1.25;
 }
 
 .date {
   font-size: var(--text-sm);
+  font-weight: 600;
   letter-spacing: 0.12em;
-  opacity: 0.85;
+  color: var(--color-primary);
 }
 
 .date::first-letter {
   text-transform: uppercase;
+}
+
+.signature {
+  margin-top: 0.4rem;
+  padding: 0 0.1em;
+  font-size: clamp(2.4rem, 1.6rem + 4vw, 3.6rem);
 }
 
 .bottom {
@@ -95,12 +81,13 @@
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  padding: 1.4rem var(--gutter) max(1.4rem, env(safe-area-inset-bottom));
-  border-top: 1px solid rgb(255 255 255 / 0.12);
-  font-size: 0.68rem;
-  letter-spacing: 0.2em;
+  padding: 1.2rem var(--gutter) max(1.2rem, env(safe-area-inset-bottom));
+  border-top: 1px solid color-mix(in srgb, var(--color-line) 60%, transparent);
+  font-size: 0.66rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: rgb(255 255 255 / 0.65);
+  color: var(--color-muted);
 }
 
 .actions {
@@ -116,14 +103,14 @@
   width: 2.5rem;
   height: 2.5rem;
   border-radius: 50%;
-  color: rgb(255 255 255 / 0.4);
+  color: color-mix(in srgb, var(--color-muted) 55%, transparent);
   transition: color 0.4s, background 0.4s;
 }
 
 .lock:hover,
 .lock:focus-visible {
-  color: #fff;
-  background: rgb(255 255 255 / 0.08);
+  color: var(--color-primary);
+  background: color-mix(in srgb, var(--color-line) 25%, transparent);
 }
 
 .top {
@@ -132,13 +119,13 @@
   width: 2.5rem;
   height: 2.5rem;
   flex-shrink: 0;
-  border: 1px solid rgb(255 255 255 / 0.3);
+  border: 1px solid var(--color-line);
   border-radius: 50%;
-  color: #fff;
+  color: var(--color-primary);
   transition: background 0.4s, transform 0.4s var(--ease-elegant);
 }
 
 .top:hover {
-  background: rgb(255 255 255 / 0.1);
+  background: color-mix(in srgb, var(--color-line) 25%, transparent);
   transform: translateY(-3px);
 }

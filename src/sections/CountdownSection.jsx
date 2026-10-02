@@ -3,6 +3,7 @@ import { CalendarPlus } from 'lucide-react';
 import SectionHeading from '../components/SectionHeading';
 import RevealSection from '../components/RevealSection';
 import ElegantButton from '../components/ElegantButton';
+import FloralCorner from '../components/decor/FloralCorner';
 import { useCountdown } from '../hooks/useCountdown';
 import { formatLongDate, formatTime, googleCalendarUrl } from '../utils/date';
 import styles from './CountdownSection.module.css';
@@ -42,8 +43,10 @@ export default function CountdownSection({ wedding, content, ceremony }) {
 
   return (
     <section className={styles.section} aria-labelledby="countdown-title">
+      <FloralCorner corner="tl" />
+      <FloralCorner corner="br" delay={0.3} />
       <div className={styles.inner}>
-        <SectionHeading id="countdown-title" light eyebrow={content.countdownEyebrow} title={total > 0 ? content.countdownTitle : content.countdownFinished} />
+        <SectionHeading id="countdown-title" eyebrow={content.countdownEyebrow} title={total > 0 ? content.countdownTitle : content.countdownFinished} />
 
         {total > 0 ? (
           <RevealSection className={styles.grid} delay={0.1}>
@@ -61,7 +64,7 @@ export default function CountdownSection({ wedding, content, ceremony }) {
           <p className={styles.date}>{formatLongDate(wedding.weddingDate, wedding.timezone)}</p>
           <p className={styles.time}>{formatTime(wedding.eventTime)}</p>
           {calendarUrl && total > 0 ? (
-            <ElegantButton href={calendarUrl} icon={CalendarPlus} variant="light">
+            <ElegantButton href={calendarUrl} icon={CalendarPlus} variant="outline">
               Agregar al calendario
             </ElegantButton>
           ) : null}
